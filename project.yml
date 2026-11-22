@@ -1,0 +1,56 @@
+name: AudioGrab
+options:
+  bundleIdPrefix: com.local
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+    CODE_SIGN_IDENTITY: "-"
+    CODE_SIGN_STYLE: Manual
+    DEVELOPMENT_TEAM: ""
+    ENABLE_HARDENED_RUNTIME: NO
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+targets:
+  AudioGrab:
+    type: application
+    platform: macOS
+    sources:
+      - path: AudioGrab
+    info:
+      path: Support/Info.plist
+      properties:
+        CFBundleDisplayName: AudioGrab
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        LSApplicationCategoryType: public.app-category.utilities
+        LSMinimumSystemVersion: $(MACOSX_DEPLOYMENT_TARGET)
+        NSHumanReadableCopyright: "Copyright © 2026 Antonio James"
+        NSPrincipalClass: NSApplication
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.local.AudioGrab
+        PRODUCT_NAME: AudioGrab
+        ENABLE_APP_SANDBOX: NO
+        COMBINE_HIDPI_IMAGES: YES
+      configs:
+        Release:
+          ARCHS: "x86_64 arm64"
+          ONLY_ACTIVE_ARCH: NO
+    scheme:
+      testTargets:
+        - AudioGrabTests
+  AudioGrabTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: AudioGrab/Core
+      - path: AudioGrab/Audio
+      - path: AudioGrabTests
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.local.AudioGrabTests
+        GENERATE_INFOPLIST_FILE: YES

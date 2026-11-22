@@ -92,3 +92,7 @@ The generated project is committed, so XcodeGen is only needed if you change `pr
 `AudioGrabTests` covers file naming and sanitizing, silence detection and level math, the auto-split
 state machine, trimming, WAV/M4A export formats, and full recording sessions fed with generated audio
 (splitting into `Show 01`, `Show 02`, trimming, never overwriting).
+
+## License
+
+MIT. See [LICENSE](LICENSE).
